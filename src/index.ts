@@ -27,7 +27,14 @@ app.use(mongoSanitize());
 
 app.use(express.json());
 
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(
+  "/docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocument, {
+    customCssUrl:
+      "https://cdn.jsdelivr.net/npm/swagger-ui@4.18.1/dist/swagger-ui.min.css",
+  })
+);
 
 app.get("/", async (req: Request, res: Response): Promise<Response> => {
   return res.send("Hello, world!");
