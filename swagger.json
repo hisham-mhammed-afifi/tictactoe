@@ -100,7 +100,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Match"
+              "$ref": "#/definitions/CreateMatch"
             }
           }
         ],
@@ -129,7 +129,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Match"
+              "$ref": "#/definitions/JoinMatch"
             }
           }
         ],
