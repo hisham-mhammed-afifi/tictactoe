@@ -16,7 +16,7 @@
       "description": "API for users in the system"
     },
     {
-      "name": "Matches",
+      "name": "Match",
       "description": "API for matches in the system"
     }
   ],
@@ -89,6 +89,59 @@
           }
         }
       }
+    },
+    "/match/create": {
+      "post": {
+        "tags": ["Match"],
+        "description": "Create new match",
+        "parameters": [
+          {
+            "name": "match",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Match"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/match/join": {
+      "post": {
+        "tags": ["Match"],
+        "description": "Join match with code",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Match"
+            }
+          },
+          {
+            "name": "match",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Match"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok"
+          },
+          "400": {
+            "description": "Not Found."
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -135,9 +188,31 @@
         "secondPlayerId": {
           "type": "string"
         },
-        "currentPlayerId": {
+        "joinCode": {
           "type": "string"
         }
+      }
+    },
+    "CreateMatch": {
+      "type": "object",
+      "properties": {
+        "firstPlayerId": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "firstPlayerId": "641c6ee5a1e611670c891b78"
+      }
+    },
+    "JoinMatch": {
+      "type": "object",
+      "properties": {
+        "secondPlayerId": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "secondPlayerId": "641cbe583dd44b3cde60322f"
       }
     },
     "GameBoard": {
