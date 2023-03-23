@@ -1,3 +1,4 @@
+import "express-async-errors";
 import express, { Application, Request, Response } from "express";
 import dotenv from "dotenv";
 import connect from "./db/connect";
@@ -10,6 +11,7 @@ import mongoSanitize from "express-mongo-sanitize";
 import { whiteList } from "./utils/helpers";
 
 import UserRoutes from "./routes/user.routes";
+import MatchRoutes from "./routes/match.routes";
 
 dotenv.config();
 
@@ -40,8 +42,7 @@ app.get("/", async (req: Request, res: Response): Promise<Response> => {
   return res.send("Hello, world!");
 });
 
-// routes
-// app.use("/tasks", taskRoutes);
 app.use("/users", UserRoutes);
+app.use("/match", MatchRoutes);
 
 connect(app);

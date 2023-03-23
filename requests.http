@@ -1,9 +1,11 @@
+GET http://localhost:3000
+###
 POST http://localhost:3000/users/signup
 Content-Type: application/json
 
 {
-    "name": "hesham",
-    "email": "hesham@gmail.com",
+    "name": "asmaa",
+    "email": "asmaa@gmail.com",
     "password": "12345"
 }
 ###
@@ -11,6 +13,20 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "email": "hesham@gmail.com",
+    "email": "asmaa@gmail.com",
     "password": "12345"
+}
+###
+POST http://localhost:3000/match/create
+Content-Type: application/json
+
+{
+    "firstPlayerId": "641c6ee5a1e611670c891b78"
+}
+###
+POST http://localhost:3000/match/join/12033
+Content-Type: application/json
+
+{
+    "secondPlayerId": "641cbe583dd44b3cde60322f"
 }
