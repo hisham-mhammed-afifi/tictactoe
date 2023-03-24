@@ -25,10 +25,29 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYXNtYWEiL
     "firstPlayerId": "641c6ee5a1e611670c891b78"
 }
 ###
-POST http://localhost:3000/match/join/12033
+PUT http://localhost:3000/match/join/12033
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYXNtYWEiLCJfaWQiOiI2NDFjYmU1ODNkZDQ0YjNjZGU2MDMyMmYiLCJpYXQiOjE2Nzk2NjE4NzR9.2AXt8pt2LyVGCD2LF4wTILZ2H3J545H1vJ5poa9e4Mo
 
 {
     "secondPlayerId": "641cbe583dd44b3cde60322f"
+}
+###
+POST http://localhost:3000/board/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYXNtYWEiLCJfaWQiOiI2NDFjYmU1ODNkZDQ0YjNjZGU2MDMyMmYiLCJpYXQiOjE2Nzk2NjE4NzR9.2AXt8pt2LyVGCD2LF4wTILZ2H3J545H1vJ5poa9e4Mo
+
+{
+    "matchId": "641cca57864eabe2fe06042b",
+    "currentPlayerId": "641c6ee5a1e611670c891b78"
+}
+###
+PUT http://localhost:3000/board/move/641e131bda03b2c55db2a12e
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYXNtYWEiLCJfaWQiOiI2NDFjYmU1ODNkZDQ0YjNjZGU2MDMyMmYiLCJpYXQiOjE2Nzk2NjE4NzR9.2AXt8pt2LyVGCD2LF4wTILZ2H3J545H1vJ5poa9e4Mo
+
+{
+    "x": 1,
+    "y": 1,
+    "mark": "x"
 }

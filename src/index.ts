@@ -12,6 +12,7 @@ import { whiteList } from "./utils/helpers";
 
 import UserRoutes from "./routes/user.routes";
 import MatchRoutes from "./routes/match.routes";
+import GameBoardRoutes from "./routes/gameBoard.routes";
 
 dotenv.config();
 
@@ -44,5 +45,6 @@ app.get("/", async (req: Request, res: Response): Promise<Response> => {
 
 app.use("/users", UserRoutes);
 app.use("/match", MatchRoutes);
+app.use("/board", GameBoardRoutes);
 
 connect(app);

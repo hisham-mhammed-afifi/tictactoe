@@ -18,6 +18,10 @@
     {
       "name": "Match",
       "description": "API for matches in the system"
+    },
+    {
+      "name": "Game Board",
+      "description": "API for boards in the system"
     }
   ],
   "schemes": ["https", "http"],
@@ -177,8 +181,107 @@
           "200": {
             "description": "Ok"
           },
-          "400": {
+          "404": {
             "description": "Not Found."
+          },
+          "401": {
+            "description": "Unauthenticated. Invalid Credentials"
+          }
+        }
+      }
+    },
+    "/board/create": {
+      "post": {
+        "tags": ["Game Board"],
+        "description": "Create new Board",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "board",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "matchId": {
+                  "type": "string"
+                },
+                "currentPlayerId": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "matchId": "641cca57864eabe2fe06042b",
+                "currentPlayerId": "641c6ee5a1e611670c891b78"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthenticated. Invalid Credentials"
+          }
+        }
+      }
+    },
+    "/board/move/{boardId}": {
+      "put": {
+        "tags": ["Game Board"],
+        "description": "play new move",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "boardId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "board Id to play on."
+          },
+          {
+            "name": "board",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "x": {
+                  "type": "integer"
+                },
+                "y": {
+                  "type": "integer"
+                },
+                "mark": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "x": 1,
+                "y": 1,
+                "mark": "x"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok"
+          },
+          "404": {
+            "description": "Not Found."
+          },
+          "400": {
+            "description": "Bad request. Wrong move"
           },
           "401": {
             "description": "Unauthenticated. Invalid Credentials"
