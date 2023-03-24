@@ -7,6 +7,6 @@ const router = express.Router();
 const controller = new MatchController();
 
 router.post("/create", authenticate, controller.create);
-router.post("/join/:code", authenticate, controller.join);
+router.put("/join/:code", authenticate, controller.join);
 
 export default router;

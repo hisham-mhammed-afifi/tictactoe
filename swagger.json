@@ -127,12 +127,15 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "401": {
+            "description": "Unauthenticated. Invalid Credentials"
           }
         }
       }
     },
     "/match/join/{code}": {
-      "post": {
+      "put": {
         "tags": ["Match"],
         "description": "Join match with code",
         "security": [
@@ -164,6 +167,9 @@
           },
           "400": {
             "description": "Not Found."
+          },
+          "401": {
+            "description": "Unauthenticated. Invalid Credentials"
           }
         }
       }
@@ -213,6 +219,14 @@
           "type": "string"
         }
       }
+    }
+  },
+  "securityDefinitions": {
+    "BearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Bearer token authorization"
     }
   }
 }
