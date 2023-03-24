@@ -22,16 +22,16 @@
   ],
   "schemes": ["http", "https"],
   "paths": {
-    "/users": {
+    "/users/me": {
       "get": {
         "tags": ["Users"],
-        "description": "Get all users",
+        "description": "Get my profile",
         "responses": {
           "200": {
             "description": "OK"
           },
           "401": {
-            "description": "Unauthorized"
+            "description": "Unauthenticated"
           },
           "404": {
             "description": "Not found"
@@ -111,19 +111,11 @@
         }
       }
     },
-    "/match/join": {
+    "/match/join/{code}": {
       "post": {
         "tags": ["Match"],
         "description": "Join match with code",
         "parameters": [
-          {
-            "name": "code",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/Match"
-            }
-          },
           {
             "name": "match",
             "in": "body",

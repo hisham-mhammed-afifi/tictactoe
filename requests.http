@@ -19,6 +19,7 @@ Content-Type: application/json
 ###
 POST http://localhost:3000/match/create
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYXNtYWEiLCJfaWQiOiI2NDFjYmU1ODNkZDQ0YjNjZGU2MDMyMmYiLCJpYXQiOjE2Nzk2NjE4NzR9.2AXt8pt2LyVGCD2LF4wTILZ2H3J545H1vJ5poa9e4Mo
 
 {
     "firstPlayerId": "641c6ee5a1e611670c891b78"
@@ -26,6 +27,7 @@ Content-Type: application/json
 ###
 POST http://localhost:3000/match/join/12033
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYXNtYWEiLCJfaWQiOiI2NDFjYmU1ODNkZDQ0YjNjZGU2MDMyMmYiLCJpYXQiOjE2Nzk2NjE4NzR9.2AXt8pt2LyVGCD2LF4wTILZ2H3J545H1vJ5poa9e4Mo
 
 {
     "secondPlayerId": "641cbe583dd44b3cde60322f"

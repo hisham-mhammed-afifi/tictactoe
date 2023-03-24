@@ -2,6 +2,7 @@ import mongoose, { Schema, Document } from "mongoose";
 import bcrypt from "bcrypt";
 
 export interface User extends Document {
+  role: string;
   name: string;
   email: string;
   password: string;
@@ -9,6 +10,7 @@ export interface User extends Document {
 }
 
 const userSchema = new Schema({
+  role: { type: String, required: true, default: "user" },
   name: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
