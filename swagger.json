@@ -145,6 +145,13 @@
         ],
         "parameters": [
           {
+            "name": "code",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "Code to join match."
+          },
+          {
             "name": "match",
             "in": "body",
             "required": true,

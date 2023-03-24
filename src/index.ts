@@ -39,7 +39,7 @@ app.use(
 );
 
 app.get("/", async (req: Request, res: Response): Promise<Response> => {
-  return res.send("Hello, world!");
+  return res.status(200).send("Hello, This is the Tic Tac Toe Game");
 });
 
 app.use("/users", UserRoutes);
