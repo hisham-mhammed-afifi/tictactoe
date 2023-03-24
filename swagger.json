@@ -73,7 +73,19 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/LoginUser"
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "email": "hesham@gmail.com",
+                "password": "12345"
+              }
             }
           }
         ],
@@ -100,7 +112,15 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/CreateMatch"
+              "type": "object",
+              "properties": {
+                "firstPlayerId": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "firstPlayerId": "641c6ee5a1e611670c891b78"
+              }
             }
           }
         ],
@@ -115,13 +135,26 @@
       "post": {
         "tags": ["Match"],
         "description": "Join match with code",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "match",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/JoinMatch"
+              "type": "object",
+              "properties": {
+                "secondPlayerId": {
+                  "type": "string"
+                }
+              },
+              "example": {
+                "secondPlayerId": "641cbe583dd44b3cde60322f"
+              }
             }
           }
         ],
@@ -156,21 +189,6 @@
         "password": "12345"
       }
     },
-    "LoginUser": {
-      "type": "object",
-      "properties": {
-        "email": {
-          "type": "string"
-        },
-        "password": {
-          "type": "string"
-        }
-      },
-      "example": {
-        "email": "hesham@gmail.com",
-        "password": "12345"
-      }
-    },
     "Match": {
       "type": "object",
       "properties": {
@@ -183,28 +201,6 @@
         "joinCode": {
           "type": "string"
         }
-      }
-    },
-    "CreateMatch": {
-      "type": "object",
-      "properties": {
-        "firstPlayerId": {
-          "type": "string"
-        }
-      },
-      "example": {
-        "firstPlayerId": "641c6ee5a1e611670c891b78"
-      }
-    },
-    "JoinMatch": {
-      "type": "object",
-      "properties": {
-        "secondPlayerId": {
-          "type": "string"
-        }
-      },
-      "example": {
-        "secondPlayerId": "641cbe583dd44b3cde60322f"
       }
     },
     "GameBoard": {
