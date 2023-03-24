@@ -6,7 +6,7 @@ import { BadRequestError, UnauthenticatedError } from "../errors";
 export class UserController {
   constructor() {}
 
-  async signup(req: Request, res: Response) {
+  async signup(req: Request, res: Response): Promise<Response> {
     const { name, email, password } = req.body;
 
     const alreadyExist = await User.findOne({ email });
@@ -17,10 +17,10 @@ export class UserController {
 
     const user = await User.create({ name, email, password });
 
-    res.status(201).json(true);
+    return res.status(201).json(true);
   }
 
-  async login(req: Request, res: Response) {
+  async login(req: Request, res: Response): Promise<Response> {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -46,6 +46,6 @@ export class UserController {
       process.env.JWT_SECRET || "123"
     );
 
-    res.status(200).json({ accessToken });
+    return res.status(200).json({ accessToken });
   }
 }

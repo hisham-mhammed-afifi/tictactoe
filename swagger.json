@@ -20,7 +20,7 @@
       "description": "API for matches in the system"
     }
   ],
-  "schemes": ["http", "https"],
+  "schemes": ["https", "http"],
   "paths": {
     "/users/me": {
       "get": {

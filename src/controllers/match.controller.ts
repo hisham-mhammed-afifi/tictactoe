@@ -5,7 +5,7 @@ import Match from "../models/Match";
 export class MatchController {
   constructor() {}
 
-  async create(req: Request, res: Response) {
+  async create(req: Request, res: Response): Promise<Response> {
     const { firstPlayerId } = req.body;
 
     const code = Math.floor(Math.random() * 100000).toString();
@@ -15,10 +15,10 @@ export class MatchController {
       joinCode: code,
     });
 
-    res.status(201).json(true);
+    return res.status(201).json(true);
   }
 
-  async join(req: Request, res: Response) {
+  async join(req: Request, res: Response): Promise<Response> {
     const { secondPlayerId } = req.body;
 
     const match = await Match.findOneAndUpdate(
@@ -34,6 +34,6 @@ export class MatchController {
       throw new NotFoundError("Not Found");
     }
 
-    res.status(200).json({ match });
+    return res.status(200).json({ match });
   }
 }
