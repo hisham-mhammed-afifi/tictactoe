@@ -26,6 +26,25 @@
   ],
   "schemes": ["https", "http"],
   "paths": {
+    "/users/me": {
+      "get": {
+        "tags": ["Users"],
+        "description": "get user profile",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok"
+          },
+          "401": {
+            "description": "Unauthenticated."
+          }
+        }
+      }
+    },
     "/users/signup": {
       "post": {
         "tags": ["Users"],

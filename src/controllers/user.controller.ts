@@ -1,7 +1,13 @@
 import User from "../models/User";
 import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
-import { BadRequestError, UnauthenticatedError } from "../errors";
+import {
+  BadRequestError,
+  NotFoundError,
+  UnauthenticatedError,
+} from "../errors";
+import { UserRequest } from "../middlewares/authentication";
+import Match from "../models/Match";
 
 export class UserController {
   constructor() {}
@@ -47,5 +53,19 @@ export class UserController {
     );
 
     return res.status(200).json({ accessToken });
+  }
+
+  async profile(req: Request, res: Response): Promise<Response> {
+    const user = (req as UserRequest).user;
+
+    if (!user) {
+      throw new UnauthenticatedError("Unauthenticated");
+    }
+
+    const matches = await Match.find({
+      $or: [{ firstPlayerId: user._id }, { secondPlayerId: user._id }],
+    });
+
+    return res.status(200).json({ user, matches });
   }
 }
